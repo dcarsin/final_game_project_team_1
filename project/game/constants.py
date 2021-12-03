@@ -36,10 +36,10 @@ SIGN_RX_IMAGE = ":resources:images/tiles/signRight.png"
 FINAL_FLAG = ":resources:images/items/flagGreen1.png"
 
 # Sprites Coordinates
-COINS_COORDINATES = [[256, 150], [512, 150], [900, 150], [965, 150], [1030, 150]]
-GEMS_COORDINATES = [[384, 325], [640, 325],[750, 600], [815, 600], [1300, 350]]
-CRATES_COORDINATES = [[256, 96], [384, 275], [512, 96], [640, 275], [768, 275], [1300, 96], [1300,155], [1300, 214], [1300, 273], [1235, 96]]
-AIR_PLATFORM = [[900, 275], [965, 275], [1030, 275], [500, 450], [565, 450], [750, 550], [815, 550]]
+# COINS_COORDINATES = [[256, 150], [512, 150], [900, 150], [965, 150], [1030, 150]]
+# GEMS_COORDINATES = [[384, 325], [640, 325],[750, 600], [815, 600], [1300, 350]]
+# CRATES_COORDINATES = [[256, 96], [384, 275], [512, 96], [640, 275], [768, 275], [1300, 96], [1300,155], [1300, 214], [1300, 273], [1235, 96]]
+# AIR_PLATFORM = [[900, 275], [965, 275], [1030, 275], [500, 450], [565, 450], [750, 550], [815, 550]]
 
 # Constants for keeping track if left or right facing
 RIGHT_FACING = 0
