@@ -1,8 +1,6 @@
 import math
 from logging import raiseExceptions
 import arcade
-import random
-
 from game.entity import Player
 from game import constants
 from game.follow_camera import Follow_camera
@@ -17,6 +15,7 @@ from game.small_platforms import SmallPlatforms
 from game.sign_rx import SignRx
 from game.final_flag import FinalFlag
 from game.entity import RobotEnemy
+import random
 
 class GameView(arcade.View):
     """ This will be the main application class """
