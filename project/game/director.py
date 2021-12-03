@@ -174,7 +174,7 @@ class GameView(arcade.View):
         self.gems = []
         self.air_platform = []
         "Create different objects on screen"        
-        self.x = 300     
+        self.x = 300        #where to start
         self.y = 96
         # # self.creates = [[self.x,self.y]]
         # self.creates.append([self.x, self.y])
