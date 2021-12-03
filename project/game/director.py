@@ -1,6 +1,8 @@
 import math
 from logging import raiseExceptions
 import arcade
+import random
+
 from game.entity import Player
 from game import constants
 from game.follow_camera import Follow_camera
