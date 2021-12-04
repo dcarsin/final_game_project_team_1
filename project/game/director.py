@@ -73,23 +73,15 @@ class GameView(arcade.View):
 
         # Create enemies
         self.robot_enemy_list = arcade.SpriteList()
-        self.helper.create_robot_enemy(constants.ENEMY_COORDINATES, self.robot_enemy_list)
+        self.coin_list = arcade.SpriteList()
+        self.gem_list = arcade.SpriteList()
         # Create the Score and timer
         self.score = Score()
         self.timer = Timer()
         # Create the ground
-        self.helper.create_ground(self.platform_list)
         # Adding Crates
-        self.helper.create_crates(constants.CRATES_COORDINATES, self.platform_list)
-        # Create Coins
-        self.coin_list = arcade.SpriteList()
-        self.helper.create_coins(constants.COINS_COORDINATES, self.coin_list)
-        # Create Gems
-        self.gem_list = arcade.SpriteList()
-        self.helper.create_gems(constants.GEMS_COORDINATES, self.gem_list)
-        # Create small platforms
-        self.small_platforms = SmallPlatforms()
-        self.helper.create_small_platforms(constants.AIR_PLATFORM, self.platform_list)
+        self.x = self.helper.create_scene(self.platform_list, self.coin_list, self.gem_list, self.robot_enemy_list)
+        self.helper.create_ground(self.x, self.platform_list)
         # Adding the sign
         self.sign_rx = SignRx()
         self.sign_list = arcade.SpriteList()
@@ -97,6 +89,7 @@ class GameView(arcade.View):
         # Adding Final Flag
         self.final_flag = FinalFlag()
         self.final_flag_list = arcade.SpriteList()
+        self.final_flag.set_position(self.x + 300)
         self.final_flag_list.append(self.final_flag)
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(
