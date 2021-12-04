@@ -1,6 +1,7 @@
 import math
 import arcade
 import random
+
 from logging import raiseExceptions
 from game.entity import Player
 from game import constants
@@ -22,15 +23,7 @@ class GameView(arcade.View):
     def __init__(self):
         # call the parent class and setup a window
         super().__init__()
-        #David coded
         self.level = 1
-        self.x = None
-        self.y = None
-        # self.creates = [[self.x,self.y]]
-        self.creates = []
-        self.coins = []
-        self.gems = []
-        self.air_platform = []
         # Initialize game lists
         self.platform_list = None
         self.player_list = None
@@ -52,10 +45,6 @@ class GameView(arcade.View):
         self.small_platforms = None
         # Create the helper
         self.helper = None
-        # Create the sign
-        self.sign_rx = None
-        # Create Final Flag
-        self.final_flag = None
         # Create the sounds
         self.background_sound = arcade.load_sound(constants.BACKGROUND_MUSIC_PATH)
         self.jump_sound = arcade.load_sound(constants.JUMP_SOUND)
@@ -101,21 +90,11 @@ class GameView(arcade.View):
         # Create the Score and timer
         self.score = Score()
         self.timer = Timer()
-        self.create_Scene()
-        # Create the ground
-        self.helper.create_ground(self.platform_list)
-        
-        # Adding Crates
-        self.helper.create_crates(self.creates, self.platform_list)
-        # Create Coins
         self.coin_list = arcade.SpriteList()
-        self.helper.create_coins(self.coins, self.coin_list)
-        # Create Gems
         self.gem_list = arcade.SpriteList()
-        self.helper.create_gems(self.gems, self.gem_list)
-        # Create small platforms
         self.small_platforms = SmallPlatforms()
-        self.helper.create_small_platforms(self.air_platform, self.platform_list)
+        #self.helper.create_Scene(self.platform_list, self.coin_list, self.gem_list)
+        self.helper.create_Scene(self.platform_list)
         # Adding the sign
         self.sign_rx = SignRx()
         self.sign_list = arcade.SpriteList()
@@ -124,6 +103,17 @@ class GameView(arcade.View):
         self.final_flag = FinalFlag()
         self.final_flag_list = arcade.SpriteList()
         self.final_flag_list.append(self.final_flag)
+        # Adding Crates
+        # self.helper.create_crates(self.creates, self.platform_list)
+        # # Create Coins
+        # self.helper.create_coins(self.coins, self.coin_list)
+        # # Create Gems
+        # self.helper.create_gems(self.gems, self.gem_list)
+        # # Create small platforms
+        # self.helper.create_small_platforms(self.air_platform, self.platform_list)
+        # Create the ground
+        # self.helper.create_ground(self.platform_list, self.x)
+        
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite, gravity_constant=constants.GRAVITY, walls=self.platform_list
@@ -168,40 +158,5 @@ class GameView(arcade.View):
         # Process final flag
         self.do_updates.check_flag_collision(self.final_flag_list, self.setup)
 
-    def create_Scene(self):
-        self.creates = []
-        self.coins = []
-        self.gems = []
-        self.air_platform = []
-        "Create different objects on screen"        
-        self.x = 300        #where to start
-        self.y = 96
-        # # self.creates = [[self.x,self.y]]
-        # self.creates.append([self.x, self.y])
-        parts = self.level * 10
-        times = 0
-        while times < parts:
-            last_x = self.x
-            last_y = self.y
-            self.x = random.randint(last_x + 64, (last_x + 200))
-            self.y = random.randint(96, (last_y + constants.MAX_JUMP_LENGTH))
-            option = random.randint(1, 2)   #1 for coins, 2 for gems
-            lenght = random.randint(1,10)   #amounts of blocks together
-            block = 0
-            while block < lenght:
-                if (self.y % 2 == 0):
-                    self.creates.append([self.x, self.y])
-                else:                    
-                    self.air_platform.append([self.x, self.y])
-                appears = random.randint(1,2)
-                if appears == 1:
-                    if option == 1:
-                        self.coins.append([self.x, self.y + 64])
-                    else:
-                        self.gems.append([self.x, self.y + 64])
-                    self.x += 64
-                block += 1            
-            times += 1
-        counter = 0
 
 

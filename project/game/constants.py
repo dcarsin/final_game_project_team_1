@@ -4,7 +4,6 @@ import os
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "TEAM 01 ARCADE GAME"
-PLATFORM_LENGTH = 2500
 
 #Sprite Constants scaled in relation to the original pics
 CHARACTER_SCALING = 1
